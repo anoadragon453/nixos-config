@@ -33,7 +33,12 @@
     ];
 
     # Shell
-    programs.fish.enable = true;
+    programs.fish = {
+      enable = true;
+      shellAliases = {
+        vim = "nvim";
+      };
+    };
 
     # OBS
     programs.obs-studio = {
@@ -54,6 +59,9 @@
       };
     };
   };
+
+  # Use fish as the default shell
+  users.users.user.shell = pkgs.fish;
 
   # Install packages to /etc/profiles.
   # Recommended to set by the home-manager guide (section 1.2).

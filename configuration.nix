@@ -97,15 +97,6 @@
     MOZ_USE_XINPUT2 = "1";
   };
 
-
-  # Steam
-  # Will implicitly enable hardware.steam-hardware
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
@@ -155,13 +146,43 @@
     '';
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # Specific program configuration
+  programs = {
+    # To enable YubiKey SSH/GPG auth
+    ssh.startAgent = false;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    # Enable neovim and set it as the default everywhere
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      withPython3 = true;
+    };
+
+    # Steam
+    # Will implicitly enable hardware.steam-hardware.
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
+  };
+
+  # udev rules
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+
+  # Shell script code called during shell initialisation
+  environment.shellInit = ''
+    # Enable yubikey to work with ssh
+    export GPG_TTY="$(tty)"
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+  '';
 
   # List services that you want to enable:
 
@@ -175,17 +196,8 @@
   # networking.firewall.enable = false;
 
   # Allow mullvad vpn daemon.
-  # Sets networking.firewall.checkReversePath to "loose"
+  # Will set networking.firewall.checkReversePath to "loose"
   services.mullvad-vpn.enable = true;
-
-  # Neovim
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    withPython3 = true;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

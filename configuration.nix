@@ -124,7 +124,6 @@
     git
     htop
     python3Full
-    neovim
     tmux
     wget
 
@@ -178,6 +177,15 @@
   # Allow mullvad vpn daemon.
   # Sets networking.firewall.checkReversePath to "loose"
   services.mullvad-vpn.enable = true;
+
+  # Neovim
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    withPython3 = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

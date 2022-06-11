@@ -35,9 +35,7 @@
     # Shell
     programs.fish = {
       enable = true;
-      shellAliases = {
-        vim = "nvim";
-      };
+      shellAliases = { };
     };
 
     # OBS

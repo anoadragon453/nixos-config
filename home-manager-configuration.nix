@@ -27,6 +27,7 @@
       # Media
       pkgs.bitwig-studio
       pkgs.blender
+      pkgs.drawpile
       pkgs.davinci-resolve
       pkgs.qjackctl
       pkgs.vlc

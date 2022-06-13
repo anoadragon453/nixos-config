@@ -117,8 +117,10 @@
     python3Full
     tmux
     wget
+    yt-dlp
 
     # Gnome extensions
+    # These need to be enabled manually in the "Extensions" app after install
     pkgs.gnomeExtensions.caffeine
     pkgs.gnomeExtensions.sound-output-device-chooser
     pkgs.gnomeExtensions.tray-icons-reloaded
@@ -134,6 +136,7 @@
     pkgs.pavucontrol
 
     # Tools
+    emote
     pkgs.gnome.gnome-tweaks
     pkgs.xournalpp
   ];

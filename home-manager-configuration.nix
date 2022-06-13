@@ -19,7 +19,7 @@
       jetbrains.pycharm-community
 
       # Tools
-      #gnome.gnome-boxes
+      gnome.gnome-boxes
 
       # Internet
       qbittorrent

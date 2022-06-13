@@ -27,4 +27,4 @@ echo "Running 'nixos-rebuild switch'..."
 
 sudo nixos-rebuild switch
 
-echo "Done!"
+echo "Done! It is recommended to reboot."

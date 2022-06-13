@@ -121,24 +121,24 @@
 
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install
-    pkgs.gnomeExtensions.caffeine
-    pkgs.gnomeExtensions.sound-output-device-chooser
-    pkgs.gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.caffeine
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.tray-icons-reloaded
 
     # Internet
     firefox
-    pkgs.mullvad-vpn
+    mullvad-vpn
 
     # Media
-    pkgs.helvum
-    pkgs.jitsi-meet-electron
-    pkgs.krita
-    pkgs.pavucontrol
+    helvum
+    jitsi-meet-electron
+    krita
+    pavucontrol
 
     # Tools
     emote
-    pkgs.gnome.gnome-tweaks
-    pkgs.xournalpp
+    gnome.gnome-tweaks
+    xournalpp
   ];
 
   # Enable nix flakes

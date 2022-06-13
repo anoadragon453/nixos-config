@@ -6,31 +6,31 @@
   # Configure the "user" user.
   home-manager.users.user = { pkgs, ... }: {
     # The packages to install for this user
-    home.packages = [
+    home.packages = with pkgs; [
       # Communication
-      pkgs.discord
-      pkgs.element-desktop
-      pkgs.signal-desktop
-      pkgs.thunderbird
-      pkgs.joplin-desktop
+      discord
+      element-desktop
+      signal-desktop
+      thunderbird
+      joplin-desktop
 
       # Development
-      pkgs.vscode
-      pkgs.jetbrains.pycharm-community
+      vscode
+      jetbrains.pycharm-community
 
       # Tools
-      #pkgs.gnome.gnome-boxes
+      #gnome.gnome-boxes
 
       # Internet
-      pkgs.qbittorrent
+      qbittorrent
 
       # Media
-      pkgs.bitwig-studio
-      pkgs.blender
-      pkgs.drawpile
-      pkgs.davinci-resolve
-      pkgs.qjackctl
-      pkgs.vlc
+      bitwig-studio
+      blender
+      drawpile
+      davinci-resolve
+      qjackctl
+      vlc
     ];
 
     # Shell

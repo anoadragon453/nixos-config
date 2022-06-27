@@ -88,8 +88,9 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # Automatically garbage collect the nix store
+  nix.gc.automatic = true;
+  nix.gc.dates = "03:15";
 
   # Set global system environment variables
   environment.sessionVariables = {
@@ -112,12 +113,17 @@
   environment.systemPackages = with pkgs; [
     # Terminal tools
     file
+    ffmpeg
+    gcc
     git
     htop
     python3Full
     tmux
     wget
     yt-dlp
+
+    # Libraries
+    libopus
 
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install
@@ -128,16 +134,19 @@
     # Internet
     firefox
     mullvad-vpn
+    tor-browser-bundle-bin
 
     # Media
     helvum
     jitsi-meet-electron
     krita
+    mpv
     pavucontrol
 
     # Tools
     emote
     gnome.gnome-tweaks
+    rustup
     xournalpp
   ];
 

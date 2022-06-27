@@ -22,6 +22,7 @@
       gnome.gnome-boxes
 
       # Internet
+      chromium
       qbittorrent
 
       # Media

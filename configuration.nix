@@ -124,6 +124,7 @@
 
     # Libraries
     libopus
+    libfido2  # for yubikey FIDO auth
 
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install
@@ -134,6 +135,7 @@
     # Internet
     firefox
     mullvad-vpn
+    qbittorrent
     tor-browser-bundle-bin
 
     # Media
@@ -160,12 +162,8 @@
 
   # Specific program configuration
   programs = {
-    # To enable YubiKey SSH/GPG auth
+    # To enable YubiKey SSH auth
     ssh.startAgent = false;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
 
     # Enable neovim and set it as the default everywhere
     neovim = {
@@ -185,21 +183,13 @@
     };
   };
 
-  # udev rules
-  services.udev.packages = [ pkgs.yubikey-personalization ];
-
-  # Shell script code called during shell initialisation
-  environment.shellInit = ''
-    # Enable yubikey to work with ssh
-    export GPG_TTY="$(tty)"
-    gpg-connect-agent /bye
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  '';
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # PC/SC Smart Card Daemon, for yubikey access
+  services.pcscd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -129,6 +129,7 @@
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install
     gnomeExtensions.caffeine
+    gnomeExtensions.gsconnect
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.tray-icons-reloaded
 
@@ -196,6 +197,14 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPortRanges = [
+    # KDEConnect/gsconnect
+    { from = 1716; to = 1764; }
+  ];
+  networking.firewall.allowedUDPPortRanges = [
+    # KDEConnect/gsconnect
+    { from = 1716; to = 1764; }
+  ];
 
   # Allow mullvad vpn daemon.
   # Will set networking.firewall.checkReversePath to "loose"

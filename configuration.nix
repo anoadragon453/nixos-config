@@ -153,6 +153,7 @@ in {
     gnome.gnome-tweaks
     rustup
     xournalpp
+    wineWowPackages.stable
   ];
 
   # Enable nix flakes

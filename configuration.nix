@@ -4,7 +4,9 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
@@ -123,7 +125,6 @@
     yt-dlp
 
     # Libraries
-    libopus
     libfido2  # for yubikey FIDO auth
 
     # Gnome extensions
@@ -140,6 +141,7 @@
     tor-browser-bundle-bin
 
     # Media
+    droidcam
     helvum
     jitsi-meet-electron
     krita
@@ -165,6 +167,9 @@
   programs = {
     # To enable YubiKey SSH auth
     ssh.startAgent = false;
+
+    # Required to allow users to use the fish shell
+    fish.enable = true;
 
     # Enable neovim and set it as the default everywhere
     neovim = {

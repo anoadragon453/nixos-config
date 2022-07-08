@@ -149,8 +149,11 @@ in {
     pavucontrol
 
     # Tools
+    android-tools
+    android-udev-rules
     emote
     gnome.gnome-tweaks
+    kid3
     rustup
     xournalpp
     wineWowPackages.stable

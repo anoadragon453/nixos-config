@@ -50,7 +50,7 @@
     programs.git = {
       enable = true;
       userName = "Andrew Morgan";
-      userEmail = "andrew@amorgan.xyz";
+      userEmail = "1342360+anoadragon453@users.noreply.github.com";
 
       extraConfig = {
         init = {

@@ -104,7 +104,7 @@ in {
   users.users.user = {
     isNormalUser = true;
     description = "Violet Ray";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "networkmanager" "wheel" ];
   };
 
   # Allow unfree packages
@@ -149,14 +149,15 @@ in {
     pavucontrol
 
     # Tools
+    android-studio
     android-tools
-    android-udev-rules
     emote
     gnome.gnome-tweaks
     kid3
     rustup
-    xournalpp
+    usbutils
     wineWowPackages.stable
+    xournalpp
   ];
 
   # Enable nix flakes
@@ -169,8 +170,8 @@ in {
 
   # Specific program configuration
   programs = {
-    # To enable YubiKey SSH auth
-    ssh.startAgent = false;
+    # Android device bridge
+    adb.enable = true;
 
     # Required to allow users to use the fish shell
     fish.enable = true;
@@ -183,6 +184,9 @@ in {
       vimAlias = true;
       withPython3 = true;
     };
+
+    # To enable YubiKey SSH auth
+    ssh.startAgent = false;
 
     # Steam
     # Will implicitly enable hardware.steam-hardware.
@@ -201,6 +205,10 @@ in {
   # PC/SC Smart Card Daemon, for yubikey access
   services.pcscd.enable = true;
 
+  # Allow mullvad vpn daemon.
+  # Will set networking.firewall.checkReversePath to "loose"
+  services.mullvad-vpn.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -214,10 +222,6 @@ in {
     # KDEConnect/gsconnect
     { from = 1716; to = 1764; }
   ];
-
-  # Allow mullvad vpn daemon.
-  # Will set networking.firewall.checkReversePath to "loose"
-  services.mullvad-vpn.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

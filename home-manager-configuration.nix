@@ -17,6 +17,7 @@
       # Development
       vscode
       jetbrains.pycharm-community
+      jetbrains.webstorm
 
       # Tools
       gnome.gnome-boxes

@@ -21,6 +21,9 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages-rt_latest;
+
   # Extra kernel modules
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -119,13 +122,13 @@ in {
     gcc
     git
     htop
-    python3Full
+    ncdu
     tmux
     wget
     yt-dlp
 
     # Libraries
-    libfido2  # for yubikey FIDO auth
+    libfido2   # for yubikey FIDO auth
 
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install

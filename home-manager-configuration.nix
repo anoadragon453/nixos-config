@@ -1,12 +1,14 @@
 # home-manager user profile configuration
 { config, lib, pkgs, modulesPath, ... }:
 
-{
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
 
   # Configure the "user" user.
   home-manager.users.user = { pkgs, ... }: {
     # The packages to install for this user
-    home.packages = with pkgs; [
+    home.packages = (with pkgs; [
       # Communication
       discord
       element-desktop
@@ -33,7 +35,12 @@
       davinci-resolve
       qjackctl
       vlc
-    ];
+    ]) ++ (with unstable; [
+      # Unstable packages
+
+      # Communication
+      cinny-desktop
+    ]);
 
     # Shell
     programs.fish = {

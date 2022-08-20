@@ -115,8 +115,9 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # Terminal tools
+    dnsutils
     file
     ffmpeg
     gcc
@@ -154,6 +155,7 @@ in {
     # Tools
     android-studio
     android-tools
+    cachix
     emote
     gnome.gnome-tweaks
     kid3
@@ -161,7 +163,9 @@ in {
     usbutils
     wineWowPackages.stable
     xournalpp
-  ];
+  ]) ++ (with unstable; [
+    # Unstable packages
+  ]);
 
   # Enable nix flakes
   nix = {

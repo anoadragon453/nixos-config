@@ -107,7 +107,7 @@ in {
   users.users.user = {
     isNormalUser = true;
     description = "Violet Ray";
-    extraGroups = [ "adbusers" "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
   };
 
   # Allow unfree packages
@@ -117,6 +117,7 @@ in {
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
     # Terminal tools
+    docker-compose_2  # Rename to docker-compose upon upgrading to next nixos release
     dnsutils
     file
     ffmpeg
@@ -215,6 +216,9 @@ in {
   # Allow mullvad vpn daemon.
   # Will set networking.firewall.checkReversePath to "loose"
   services.mullvad-vpn.enable = true;
+
+  # Enable the docker daemon
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

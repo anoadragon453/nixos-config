@@ -29,14 +29,16 @@ in {
       qbittorrent
 
       # Media
-      bitwig-studio
       blender
       drawpile
-      davinci-resolve
       qjackctl
+      shotcut
       vlc
     ]) ++ (with unstable; [
       # Unstable packages
+
+      # Media
+      bitwig-studio
 
       # Communication
       cinny-desktop

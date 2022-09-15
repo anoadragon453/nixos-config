@@ -149,6 +149,7 @@ in {
     droidcam
     helvum
     jitsi-meet-electron
+    kdenlive
     krita
     mpv
     pavucontrol
@@ -209,6 +210,9 @@ in {
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Enable support for flatpak applications
+  services.flatpak.enable = true;
 
   # PC/SC Smart Card Daemon, for yubikey access
   services.pcscd.enable = true;

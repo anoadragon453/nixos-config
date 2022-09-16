@@ -44,10 +44,40 @@ in {
       cinny-desktop
     ]);
 
+    # Dotfile configuration
+    xdg.enable = true;
+
+    # Powerlevel10K theme settings
+    xdg.configFile."powerlevel10k/p10k.zsh".source = ./dotfiles/powerlevel10k/p10k.zsh;
+
     # Shell
-    programs.fish = {
+    programs.zsh = {
       enable = true;
+
+      # Enable autosuggestion support
+      enableAutosuggestions = true;
+
+      # Define any shell aliases
       shellAliases = { };
+
+      # Enable shared-terminal history support
+      history = {
+        size = 10000;
+      };
+
+      # Source the generated powerlevel10k theme config
+      initExtra = "source ~/.config/powerlevel10k/p10k.zsh";
+
+      # Use the ZPlug plugin manager
+      zplug = {
+       enable = true;
+       plugins = [
+         # Extra zsh command completions
+         { name = "zsh-users/zsh-completions"; tags = [ depth:1 ]; }
+         # powerlevel10k zsh theme
+         { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
+       ];
+     };
     };
 
     # OBS
@@ -64,14 +94,14 @@ in {
 
       extraConfig = {
         init = {
-	  defaultBranch = "main";
-	};
+	        defaultBranch = "main";
+	      };
       };
     };
   };
 
-  # Use fish as the default shell
-  users.users.user.shell = pkgs.fish;
+  # Change the default shell
+  users.users.user.shell = pkgs.zsh;
 
   # Install packages to /etc/profiles.
   # Recommended to set by the home-manager guide (section 1.2).

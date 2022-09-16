@@ -110,6 +110,13 @@ in {
     extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
   };
 
+  # Define zsh as a known shell.
+  # Required for GDM to show user accounts that use these shells.
+  environment.shells = with pkgs; [ zsh ];
+
+  # Allow zsh to complete options for system packages
+  environment.pathsToLink = [ "/share/zsh" ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -182,8 +189,8 @@ in {
     # Android device bridge
     adb.enable = true;
 
-    # Required to allow users to use the fish shell
-    fish.enable = true;
+    # Required to allow users to use the zsh shell
+    zsh.enable = true;
 
     # Enable neovim and set it as the default everywhere
     neovim = {

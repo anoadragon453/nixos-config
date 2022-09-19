@@ -133,6 +133,10 @@ in {
  
           # History search with Ctrl-R
           bindkey '^r' history-incremental-search-backward
+
+          # Ctrl-A and Ctrl-E jump to beginning and end of line
+          bindkey '^a' beginning-of-line
+          bindkey '^e' end-of-line
  
           [[ -n "''${key[Up]}"   ]] && bindkey -- "''${key[Up]}"   up-line-or-beginning-search
           [[ -n "''${key[Down]}" ]] && bindkey -- "''${key[Down]}" down-line-or-beginning-search

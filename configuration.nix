@@ -124,6 +124,7 @@ in {
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
     # Terminal tools
+    direnv
     docker-compose_2  # Rename to docker-compose upon upgrading to next nixos release
     dnsutils
     file

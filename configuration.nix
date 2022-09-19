@@ -194,6 +194,11 @@ in {
       keep-outputs = true
       keep-derivations = true
     '';
+
+    settings = {
+      # Saves quite a lot of disk space
+      auto-optimise-store = true;
+    };
   };
 
   # Specific program configuration

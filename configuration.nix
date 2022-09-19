@@ -163,6 +163,9 @@ in {
     mpv
     pavucontrol
 
+    # Misc
+    meslo-lgs-nf  # patched nerd fonts for powerlevel10k
+
     # Tools
     android-studio
     android-tools

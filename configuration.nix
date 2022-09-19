@@ -131,6 +131,7 @@ in {
     gcc
     git
     htop
+    magic-wormhole
     ncdu
     tmux
     wget
@@ -142,6 +143,7 @@ in {
     # Gnome extensions
     # These need to be enabled manually in the "Extensions" app after install
     gnomeExtensions.caffeine
+    gnomeExtensions.fullscreen-notifications
     gnomeExtensions.gsconnect
     gnomeExtensions.sound-output-device-chooser
     gnomeExtensions.tray-icons-reloaded

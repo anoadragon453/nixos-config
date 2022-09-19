@@ -46,9 +46,10 @@ in {
 
     # Dotfile configuration
     xdg.enable = true;
-
-    # Powerlevel10K theme settings
-    xdg.configFile."powerlevel10k/p10k.zsh".source = ./dotfiles/powerlevel10k/p10k.zsh;
+    xdg.configFile = {
+      # Powerlevel10K theme settings
+      "powerlevel10k/p10k.zsh".source = ./dotfiles/powerlevel10k/p10k.zsh;
+    };
 
     # Shell
     programs.zsh = {

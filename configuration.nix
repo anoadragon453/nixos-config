@@ -14,6 +14,8 @@ in {
       /etc/nixos/home-manager-configuration.nix
       # Drive home manager via the system configuration
       <home-manager/nixos>
+      # Audio production related options
+      <musnix>
     ];
 
   # Bootloader.
@@ -22,7 +24,10 @@ in {
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages-rt_latest;
+
+  # Configure the kernel for high-performance audio-production
+  musnix.kernel.optimize = true;
+  musnix.kernel.realtime = true;
 
   # Extra kernel modules
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -93,6 +98,12 @@ in {
     #media-session.enable = true;
   };
 
+  # Configure various settings for a better audio production experience.
+  # See https://github.com/musnix/musnix
+  musnix.enable = true;
+  musnix.soundcardPciId = "00:1f.3";
+  musnix.das_watchdog.enable = true;
+
   # Automatically garbage collect the nix store
   nix.gc.automatic = true;
   nix.gc.dates = "03:15";
@@ -107,7 +118,7 @@ in {
   users.users.user = {
     isNormalUser = true;
     description = "Violet Ray";
-    extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "audio" "docker" "networkmanager" "wheel" ];
   };
 
   # Define zsh as a known shell.
@@ -179,8 +190,10 @@ in {
     kid3
     rustup
     usbutils
-    wineWowPackages.stable
+    wineWowPackages.stableFull
     xournalpp
+    yabridge
+    yabridgectl
   ]) ++ (with unstable; [
     # Unstable packages
   ]);

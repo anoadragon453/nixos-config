@@ -11,7 +11,9 @@ echo "Adding channels..."
 
 # Add home-manager channel to install home-manager from.
 # This is done as root as we'll be managing home-manager from the system configuration.
-sudo nix-channel --add "https://github.com/nix-community/home-manager/archive/release-$NIXOS_RELEASE.tar.gz home-manager"
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-$NIXOS_RELEASE.tar.gz home-manager
+# Add the musnix channel, enabling simple configuration of audio-production related options.
+sudo nix-channel --add https://github.com/musnix/musnix/archive/master.tar.gz musnix
 
 echo "Symlinking configuration files..."
 

@@ -132,8 +132,11 @@ in {
     gcc
     git
     htop
+    imagemagick
     magic-wormhole
     ncdu
+    pciutils
+    ripgrep
     tmux
     wget
     yt-dlp

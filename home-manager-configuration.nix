@@ -29,7 +29,6 @@ in {
       qbittorrent
 
       # Media
-      blender
       drawpile
       qjackctl
       shotcut
@@ -38,10 +37,11 @@ in {
       # Unstable packages
 
       # Media
-      bitwig-studio
+      bitwig-studio          # 4.3+ features native pipewire support
+      blender-hip            # Need at least 3.2+ to get HIP (AMD GPU accel.) support
 
       # Communication
-      cinny-desktop
+      cinny-desktop          # Latest version for bug reports
     ]);
 
     # Dotfile configuration

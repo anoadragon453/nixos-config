@@ -3,7 +3,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  # Use the amdgpu driver
+  # Use the amdgpu (open source) driver
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Tell X11 to use the 'amdgpu' driver
@@ -12,7 +12,7 @@
 
   # Enable Vulkan support
   hardware.opengl.driSupport = true;
-  # For 32 bit applications
+  # and for 32 bit applications
   hardware.opengl.driSupport32Bit = true;
 
   # Enable OpenCL support

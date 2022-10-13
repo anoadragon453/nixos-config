@@ -29,4 +29,10 @@ echo "Running 'nixos-rebuild switch'..."
 
 sudo nixos-rebuild switch
 
+# Install flatpak apps
+# TODO: How to do this via nix?
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install discord
+flatpak install discord-screenaudio
+
 echo "Done! It is recommended to reboot."

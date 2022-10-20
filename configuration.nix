@@ -93,9 +93,9 @@ in {
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    # use the example session manager
+    media-session.enable = true;
+    wireplumber.enable = false;
   };
 
   # Configure various settings for a better audio production experience.
@@ -117,6 +117,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Violet Ray";
     extraGroups = [ "adbusers" "audio" "docker" "networkmanager" "wheel" ];
   };
@@ -139,8 +140,10 @@ in {
     docker-compose_2  # Rename to docker-compose upon upgrading to next nixos release
     dnsutils
     file
+    fd
     ffmpeg
     gcc
+    ghostscript
     git
     htop
     imagemagick
@@ -196,6 +199,9 @@ in {
     yabridgectl
   ]) ++ (with unstable; [
     # Unstable packages
+
+    # Fix GNOME bug with alt-tab. Only available in unstable currently
+    gnomeExtensions.alttab-scroll-workaround
   ]);
 
   # Enable nix flakes

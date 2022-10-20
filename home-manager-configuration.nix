@@ -177,9 +177,6 @@ in {
     };
   };
 
-  # Change the default shell
-  users.users.user.shell = pkgs.zsh;
-
   # Install packages to /etc/profiles.
   # Recommended to set by the home-manager guide (section 1.2).
   home-manager.useUserPackages = true;

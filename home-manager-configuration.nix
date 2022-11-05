@@ -30,7 +30,6 @@ in {
 
       # Media
       drawpile
-      qjackctl
       shotcut
       vlc
     ]) ++ (with unstable; [
@@ -39,6 +38,7 @@ in {
       # Media
       bitwig-studio          # 4.3+ features native pipewire support
       blender-hip            # Need at least 3.2+ to get HIP (AMD GPU accel.) support
+      qpwgraph               # Want newer features and bugfixes
 
       # Communication
       cinny-desktop          # Latest version for bug reports

@@ -30,7 +30,6 @@ in {
 
       # Media
       drawpile
-      shotcut
       vlc
     ]) ++ (with unstable; [
       # Unstable packages

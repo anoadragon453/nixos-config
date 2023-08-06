@@ -1,5 +1,8 @@
 # NixOS Config
 
+**This repository has been replaced by https://github.com/anoadragon453/dotfiles,
+which still uses nix :)**
+
 My [NixOS](https://nixos.org/) config files. Build my system in one command!
 
 ## Install
